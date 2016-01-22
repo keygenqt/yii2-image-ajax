@@ -1,14 +1,14 @@
 <?php
 
-    /** @var String $id */
-    /** @var String $imageDefault */
-    /** @var String $attribute */
-    /** @var String $subtitle */
-    /** @var String $btnSelect */
-    /** @var String $btnDelete */
-    /** @var \yii\base\Model $model */
+/** @var String $id */
+/** @var String $imageDefault */
+/** @var String $attribute */
+/** @var String $subtitle */
+/** @var String $btnSelect */
+/** @var String $btnDelete */
+/** @var \yii\base\Model $model */
 
-    use \yii\helpers\Html;
+use \yii\helpers\Html;
 
 ?>
 
@@ -38,9 +38,7 @@
             <div class="error-block"></div>
             <div class="btn-buttons-images">
                 <div id="<?= $id ?>-select" class="btn btn-success"><?= $btnSelect ?></div>
-                <?php if (!$model->$attribute):?>
-                    <div id="<?= $id ?>-delete" class="btn btn-danger"><?= $btnDelete ?></div>
-                <?php endif; ?>
+                <div id="<?= $id ?>-delete" class="btn btn-danger"><?= $btnDelete ?></div>
                 <div class="subtitle">
                     <?= $subtitle ?>
                 </div>
@@ -52,7 +50,7 @@
 
 <script type="text/javascript">
     <?php if (!$model->$attribute): ?>
-        $('#<?= $id . '-delete' ?>').hide();
+    $('#<?= $id . '-delete' ?>').hide();
     <?php endif; ?>
     $('#<?= $id . '-delete' ?>').click(function() {
         $('#<?= $id . '-hidden-filed' ?>').val("");
