@@ -4,6 +4,8 @@
     /** @var String $imageDefault */
     /** @var String $attribute */
     /** @var String $subtitle */
+    /** @var String $btnSelect */
+    /** @var String $btnDelete */
     /** @var \yii\base\Model $model */
 
     use \yii\helpers\Html;
@@ -35,9 +37,9 @@
         <div class="table-cell">
             <div class="error-block"></div>
             <div class="btn-buttons-images">
-                <div id="<?= $id ?>-select" class="btn btn-success">Select</div>
+                <div id="<?= $id ?>-select" class="btn btn-success"><?= $btnSelect ?></div>
                 <?php if (!$model->$attribute):?>
-                    <div id="<?= $id ?>-delete" class="btn btn-danger">Delete</div>
+                    <div id="<?= $id ?>-delete" class="btn btn-danger"><?= $btnDelete ?></div>
                 <?php endif; ?>
                 <div class="subtitle">
                     <?= $subtitle ?>

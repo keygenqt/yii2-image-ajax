@@ -27,6 +27,8 @@ class ImageAjax extends InputWidget
             'attribute' => $this->attribute,
             'model' => $this->model,
             'subtitle' => $this->subtitle,
+            'btnSelect' => $this->btnSelect,
+            'btnDelete' => $this->btnDelete,
         ]);
 
         $this->getView()->registerJs("
