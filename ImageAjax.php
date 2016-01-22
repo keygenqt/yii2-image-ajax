@@ -2,7 +2,12 @@
 
 namespace keygenqt\imageAjax;
 
-class Select2 extends \yii\widgets\InputWidget
-{
+use yii\widgets\InputWidget;
 
+class ImageAjax extends InputWidget
+{
+    public function init()
+    {
+        parent::init();
+    }
 }
