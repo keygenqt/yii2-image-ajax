@@ -10,26 +10,26 @@ The preferred way to install this extension is through [composer](http://getcomp
 Add
 
 ```
-    "require": {
-        "keygenqt/yii2-image-ajax": "*"
-    },
-    "repositories":[
-        {
-            "type": "git",
-            "url": "https://github.com/keygenqt/yii2-image-ajax.git"
-        }
-    ],
+"require": {
+    "keygenqt/yii2-image-ajax": "*"
+},
+"repositories":[
+    {
+        "type": "git",
+        "url": "https://github.com/keygenqt/yii2-image-ajax.git"
+    }
+]
 ```
 
 to the ```require``` section of your `composer.json` file.
 
 ## Latest Release
 
-> NOTE: The latest version of the module is v0.5.0 beta.
-
-Enhancements with release v2.0:
+The latest version of the module is v0.5.0 beta.
 
 ## Usage
+
+View:
 
 ```php
 use keygenqt\imageAjax\ImageAjax;
@@ -42,6 +42,11 @@ use keygenqt\imageAjax\ImageAjax;
     'subtitle' => 'This photo is your identity on RoughCut and appears on your profile and gigs.'
 ]) ?>
 
+```
+
+Controller:
+
+```php
 // AjaxController
 class AjaxController extends Controller
 {
@@ -50,10 +55,12 @@ class AjaxController extends Controller
     public function actionUploadImage($type)
     {
         if (Yii::$app->request->isAjax) {
-            $result = Helper::uploadImage($type, 'file');
+
+            $url = Helper::uploadImage($type, 'file');
+
             if ($result) {
                 echo Json::encode(array(
-                    'url' => $result,
+                    'url' => $url,
                     'error' => false,
                 ));
             } else {
