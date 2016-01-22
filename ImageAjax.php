@@ -23,8 +23,9 @@ class ImageAjax extends InputWidget
 
         echo $this->getView()->render('@keygenqt/imageAjax/views/view', [
             'id' => $id,
-            'imageDefault' => $this->defaultLogo ? $this->defaultLogo : $baseUrl . '/images/default_logo.jpg',
+            'imageDefault' => $this->defaultLogo,
             'attribute' => $this->attribute,
+            'baseUrl' => $baseUrl,
             'model' => $this->model,
             'subtitle' => $this->subtitle,
             'btnSelect' => $this->btnSelect,
@@ -39,6 +40,9 @@ class ImageAjax extends InputWidget
                 maxFiles: 1,
                 maxFilesize: 100,
                 thumbnail: function() {},
+                sending: function() {
+                    $('#yii2-image-ajax-load').show();
+                },
                 error: function(file, message) {
                     $('.yii2-image-ajax .error-block').html('Error server response.').show();
                     setTimeout(function() { $('.yii2-image-ajax .error-block').hide() }, 3000);
@@ -57,6 +61,7 @@ class ImageAjax extends InputWidget
                     $('#$id-select').removeClass('img-loading');
                     $('#$id-hidden-filed').val(response.url);
                     this.removeAllFiles();
+                    $('#yii2-image-ajax-load').hide();
                 }
             });
         ");

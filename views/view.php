@@ -31,7 +31,14 @@ use \yii\helpers\Html;
     <div class="table">
         <div class="table-cell">
             <div class="image-data">
-                <img id="image-<?= $id ?>" src=" <?= $model->$attribute ? $model->$attribute : $imageDefault ?>"/>
+                <div id="yii2-image-ajax-load" class="load">
+                    <div class="table">
+                        <div class="table-cell">
+                            <img src="<?= $baseUrl ?>/images/load.gif"/>
+                        </div>
+                    </div>
+                </div>
+                <img id="image-<?= $id ?>" src=" <?= $model->$attribute ? $model->$attribute : $baseUrl . '/images/default_logo.jpg' ?>"/>
             </div>
         </div>
         <div class="table-cell">
@@ -54,7 +61,7 @@ use \yii\helpers\Html;
     <?php endif; ?>
     $('#<?= $id . '-delete' ?>').click(function() {
         $('#<?= $id . '-hidden-filed' ?>').val("");
-        $('#image-<?= $id ?>').attr('src', "<?= $imageDefault ?>");
+        $('#image-<?= $id ?>').attr('src', "<?= $baseUrl . '/images/default_logo.jpg' ?>");
         $(this).hide();
     });
 </script>
