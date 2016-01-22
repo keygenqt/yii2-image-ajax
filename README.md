@@ -25,7 +25,7 @@ to the ```require``` section of your `composer.json` file.
 
 ## Latest Release
 
-The latest version of the module is v0.5.0 beta.
+The latest version of the module is v0.5.0 `BETA`.
 
 ## Usage
 
