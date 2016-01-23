@@ -5,9 +5,9 @@ This is the ImageAjax widget and a Yii 2 enhanced wrapper for the [Dropzone jQue
 
 ## Installation
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/). Check the [composer.json](https://github.com/kartik-v/yii2-widget-select2/blob/master/composer.json) for this extension's requirements and dependencies. Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-Add
+Either add
 
 ```
 "require": {
@@ -21,7 +21,7 @@ Add
 ]
 ```
 
-to the ```require``` section of your `composer.json` file.
+of your `composer.json` file.
 
 ## Latest Release
 
