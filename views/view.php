@@ -11,6 +11,8 @@
 
 use \yii\helpers\Html;
 
+$defaultLogo = $defaultLogo ? $defaultLogo : $baseUrl . '/images/default_logo.jpg'
+
 ?>
 
 <style>
@@ -39,7 +41,7 @@ use \yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-                <img id="image-<?= $id ?>" src=" <?= $model->$attribute ? $model->$attribute : ($defaultLogo ? $defaultLogo : $baseUrl . '/images/default_logo.jpg') ?>"/>
+                <img id="image-<?= $id ?>" src=" <?= $model->$attribute ? $model->$attribute : $defaultLogo ?>"/>
             </div>
         </div>
         <div class="table-cell">
@@ -62,7 +64,7 @@ use \yii\helpers\Html;
     <?php endif; ?>
     $('#<?= $id . '-delete' ?>').click(function() {
         $('#<?= $id . '-hidden-filed' ?>').val("");
-        $('#image-<?= $id ?>').attr('src', "<?= $baseUrl . '/images/default_logo.jpg' ?>");
+        $('#image-<?= $id ?>').attr('src', "<?= $defaultLogo ?>");
         $(this).hide();
     });
 </script>
