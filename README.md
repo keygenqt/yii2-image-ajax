@@ -67,8 +67,7 @@ class AjaxController extends Controller
             exit;
         }
     }
-
-
+}
 ```
 
 ## ScreenShot
