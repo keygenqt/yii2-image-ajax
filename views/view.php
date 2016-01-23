@@ -1,25 +1,19 @@
 <?php
 
-/** @var String $id */
-/** @var String $defaultLogo */
-/** @var String $baseUrl */
-/** @var String $attribute */
-/** @var String $subtitle */
-/** @var String $btnSelect */
-/** @var String $btnDelete */
-/** @var \yii\base\Model $model */
+/** @var keygenqt\imageAjax\ImageAjax $widget */
 
 use \yii\helpers\Html;
-
-$defaultLogo = $defaultLogo ? $defaultLogo : $baseUrl . '/images/default_logo.jpg'
 
 ?>
 
 <style>
-    .field-<?= strtolower(preg_replace('/.+\\\(.+)/ui', '$1', $model::className())) . '-' . $attribute ?> label.control-label {
-        display: none;
-    }
-    #<?= $id ?>-select.img-loading .fa-hourglass {
+    <?php if ($widget->label === false): ?>
+        .field-<?= $widget->getModelName() . '-' . $widget->attribute ?> label.control-label {
+            display: none;
+        }
+    <?php endif; ?>
+
+    #<?= $widget->getId() ?>-select.img-loading .fa-hourglass {
         color: black;
         font-size: 12px;
         display: inline-block;
@@ -27,9 +21,9 @@ $defaultLogo = $defaultLogo ? $defaultLogo : $baseUrl . '/images/default_logo.jp
     }
 </style>
 
-<div class="yii2-image-ajax <?= $id ?>">
+<div class="yii2-image-ajax <?= $widget->getId() ?>">
 
-    <?= Html::activeHiddenInput($model, $attribute, array('id' => $id . '-hidden-filed')) ?>
+    <?= Html::activeHiddenInput($widget->model, $widget->attribute, array('id' => $widget->getId() . '-hidden-filed')) ?>
 
     <div class="table">
         <div class="table-cell">
@@ -37,20 +31,20 @@ $defaultLogo = $defaultLogo ? $defaultLogo : $baseUrl . '/images/default_logo.jp
                 <div id="yii2-image-ajax-load" class="load">
                     <div class="table">
                         <div class="table-cell">
-                            <img src="<?= $baseUrl ?>/images/load.gif"/>
+                            <img src="<?= $widget->getBaseUrl() ?>/images/load.gif"/>
                         </div>
                     </div>
                 </div>
-                <img id="image-<?= $id ?>" src=" <?= $model->$attribute ? $model->$attribute : $defaultLogo ?>"/>
+                <img id="image-<?= $widget->getId() ?>" src=" <?= $widget->model->{$widget->attribute} ? $widget->model->{$widget->attribute} : $widget->getDefaultLogo() ?>"/>
             </div>
         </div>
         <div class="table-cell">
             <div class="error-block"></div>
             <div class="btn-buttons-images">
-                <div id="<?= $id ?>-select" class="btn btn-success"><?= $btnSelect ?></div>
-                <div id="<?= $id ?>-delete" class="btn btn-danger"><?= $btnDelete ?></div>
+                <div id="<?= $widget->getId() ?>-select" class="btn-green-image-ajax"><?= $widget->btnSelect ?></div>
+                <div id="<?= $widget->getId() ?>-delete" class="btn-red-image-ajax"><?= $widget->btnDelete ?></div>
                 <div class="subtitle">
-                    <?= $subtitle ?>
+                    <?= $widget->subtitle ?>
                 </div>
             </div>
         </div>
@@ -59,12 +53,12 @@ $defaultLogo = $defaultLogo ? $defaultLogo : $baseUrl . '/images/default_logo.jp
 </div>
 
 <script type="text/javascript">
-    <?php if (!$model->$attribute): ?>
-    $('#<?= $id . '-delete' ?>').hide();
+    <?php if (!$widget->model->{$widget->attribute}): ?>
+    $('#<?= $widget->getId() . '-delete' ?>').hide();
     <?php endif; ?>
-    $('#<?= $id . '-delete' ?>').click(function() {
-        $('#<?= $id . '-hidden-filed' ?>').val("");
-        $('#image-<?= $id ?>').attr('src', "<?= $defaultLogo ?>");
+    $('#<?= $widget->getId() . '-delete' ?>').click(function() {
+        $('#<?= $widget->getId() . '-hidden-filed' ?>').val("");
+        $('#image-<?= $widget->getId() ?>').attr('src', "<?= $widget->getDefaultLogo() ?>");
         $(this).hide();
     });
 </script>

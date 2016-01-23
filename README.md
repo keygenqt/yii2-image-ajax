@@ -36,6 +36,8 @@ use keygenqt\imageAjax\ImageAjax;
 
 // Normal select with ActiveForm & model
 <?= $form->field($model, 'icon')->widget(ImageAjax::classname(), [
+    'label' => false,
+    'defaultImage' => '/images/user-icon-default.png',
     'btnSelect' => 'Choose',
     'btnDelete' => 'Delete',
     'url' => ['ajax/upload-image'],

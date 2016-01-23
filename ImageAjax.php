@@ -8,34 +8,49 @@ use yii\widgets\InputWidget;
 class ImageAjax extends InputWidget
 {
     public $url = [];
-    public $defaultLogo;
+    public $label = true;
+    public $defaultImage;
     public $btnSelect = 'Select';
     public $btnDelete = 'Delete';
-    public $subtitle = 'Max size 100 MIB';
+    public $subtitle = '';
+
+    private $_baseUrl;
+    private $_ajaxUrl;
+
+    public function getModelName()
+    {
+        return strtolower(preg_replace('/.+\\\(.+)/ui', '$1', get_class($this->model)));
+    }
+
+    public function getBaseUrl()
+    {
+        if ($this->_baseUrl === null) {
+            $this->_baseUrl = ActiveAssets::register($this->getView())->baseUrl;
+        }
+        return $this->_baseUrl;
+    }
+
+    public function getUrl()
+    {
+        if ($this->_ajaxUrl === null) {
+            $this->_ajaxUrl = Url::toRoute($this->url);
+        }
+        return $this->_ajaxUrl;
+    }
+
+    public function getDefaultLogo()
+    {
+        return $this->defaultImage ? $this->defaultImage : $this->getBaseUrl() . '/images/default_logo.jpg';
+    }
 
     public function init()
     {
-        $this->url = Url::toRoute($this->url);
-
-        $id = $this->getId() . rand(0, 999999);
-
-        $baseUrl = ActiveAssets::register($this->getView())->baseUrl;
-
-        echo $this->getView()->render('@keygenqt/imageAjax/views/view', [
-            'id' => $id,
-            'defaultLogo' => $this->defaultLogo,
-            'attribute' => $this->attribute,
-            'baseUrl' => $baseUrl,
-            'model' => $this->model,
-            'subtitle' => $this->subtitle,
-            'btnSelect' => $this->btnSelect,
-            'btnDelete' => $this->btnDelete,
-        ]);
+        echo $this->getView()->render('@keygenqt/imageAjax/views/view', ['widget' => $this]);
 
         $this->getView()->registerJs("
 //          <script>
-            new Dropzone('#$id-select', {
-                url: '{$this->url}',
+            new Dropzone('#{$this->getId()}-select', {
+                url: '{$this->getUrl()}',
                 clickable: true,
                 maxFiles: 1,
                 maxFilesize: 100,
@@ -55,16 +70,16 @@ class ImageAjax extends InputWidget
                     response = JSON.parse(response);
 
                     if (response.error === false) {
-                        $('#image-{$id}').attr('src', response.url);
-                        $('#$id-delete').show();
+                        $('#image-{$this->getId()}').attr('src', response.url);
+                        $('#{$this->getId()}-delete').show();
                     } else {
                         $('.yii2-image-ajax .error-block').html(response.error).show();
                         setTimeout(function() {
                             $('.yii2-image-ajax .error-block').hide();
                         }, 3000);
                     }
-                    $('#$id-select').removeClass('img-loading');
-                    $('#$id-hidden-filed').val(response.url);
+                    $('#{$this->getId()}-select').removeClass('img-loading');
+                    $('#{$this->getId()}-hidden-filed').val(response.url);
                     this.removeAllFiles();
                     $('#yii2-image-ajax-load').hide();
                 }
