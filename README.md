@@ -1,4 +1,4 @@
-yii2-widget-select2
+yii2-image-ajax
 ===================
 
 This is the ImageAjax widget and a Yii 2 enhanced wrapper for the [Dropzone jQuery plugin](http://www.dropzonejs.com). A simple way to do ajax loading image on the site.
@@ -80,4 +80,6 @@ class AjaxController extends Controller
 
 ## License
 
-**yii2-widget-select2** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
+**yii2-image-ajax** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
+
+
