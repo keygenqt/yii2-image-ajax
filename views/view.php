@@ -1,7 +1,8 @@
 <?php
 
 /** @var String $id */
-/** @var String $imageDefault */
+/** @var String $defaultLogo */
+/** @var String $baseUrl */
 /** @var String $attribute */
 /** @var String $subtitle */
 /** @var String $btnSelect */
@@ -38,7 +39,7 @@ use \yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-                <img id="image-<?= $id ?>" src=" <?= $model->$attribute ? $model->$attribute : $baseUrl . '/images/default_logo.jpg' ?>"/>
+                <img id="image-<?= $id ?>" src=" <?= $model->$attribute ? $model->$attribute : ($defaultLogo ? $defaultLogo : $baseUrl . '/images/default_logo.jpg') ?>"/>
             </div>
         </div>
         <div class="table-cell">

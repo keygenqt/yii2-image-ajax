@@ -23,7 +23,7 @@ class ImageAjax extends InputWidget
 
         echo $this->getView()->render('@keygenqt/imageAjax/views/view', [
             'id' => $id,
-            'imageDefault' => $this->defaultLogo,
+            'defaultLogo' => $this->defaultLogo,
             'attribute' => $this->attribute,
             'baseUrl' => $baseUrl,
             'model' => $this->model,
