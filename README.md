@@ -55,14 +55,14 @@ class AjaxController extends Controller
         if (Yii::$app->request->isAjax) {
             $url = Helper::uploadImage('file');
             if ($url) {
-                echo Json::encode(array(
+                echo Json::encode([
                     'url' => $url,
                     'error' => false,
-                ));
+                ]);
             } else {
-                echo Json::encode(array(
+                echo Json::encode([
                     'error' => 'Error upload file.',
-                ));
+                ]);
             }
             exit;
         }
