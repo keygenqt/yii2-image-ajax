@@ -27,6 +27,12 @@ to the ```require``` section of your `composer.json` file.
 
 The latest version of the module is v0.5.0 `BETA`.
 
+## Latest Release
+![Alt text](/../yii2-image-ajax/screenshot/empty.png?raw=true "Empty form")
+![Alt text](/../yii2-image-ajax/screenshot/load.png?raw=true "Load form")
+![Alt text](/../yii2-image-ajax/screenshot/select.png?raw=true "Select form")
+![Alt text](/../yii2-image-ajax/screenshot/error.png?raw=true "Error form")
+
 ## Usage
 
 View:
@@ -36,10 +42,10 @@ use keygenqt\imageAjax\ImageAjax;
 
 // Normal select with ActiveForm & model
 <?= $form->field($model, 'icon')->widget(ImageAjax::classname(), [
-    'btnSelect' => 'Choose Photo',
+    'btnSelect' => 'Choose',
     'btnDelete' => 'Delete',
-    'url' => ['ajax/upload-image', 'type' => Helper::UPLOAD_ICON_USER],
-    'subtitle' => 'This photo is your identity on RoughCut and appears on your profile and gigs.'
+    'url' => ['ajax/upload-image'],
+    'subtitle' => 'This video will change its size to 360х360, so keep that in mind.'
 ]) ?>
 
 ```
@@ -52,13 +58,11 @@ class AjaxController extends Controller
 {
     ...
 
-    public function actionUploadImage($type)
+    public function actionUploadImage()
     {
         if (Yii::$app->request->isAjax) {
-
-            $url = Helper::uploadImage($type, 'file');
-
-            if ($result) {
+            $url = Helper::uploadImage('file');
+            if ($url) {
                 echo Json::encode(array(
                     'url' => $url,
                     'error' => false,
@@ -68,6 +72,7 @@ class AjaxController extends Controller
                     'error' => 'Error upload file.',
                 ));
             }
+            exit;
         }
     }
 

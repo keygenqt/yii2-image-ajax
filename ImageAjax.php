@@ -44,8 +44,11 @@ class ImageAjax extends InputWidget
                     $('#yii2-image-ajax-load').show();
                 },
                 error: function(file, message) {
+                    $('#yii2-image-ajax-load').hide();
                     $('.yii2-image-ajax .error-block').html('Error server response.').show();
-                    setTimeout(function() { $('.yii2-image-ajax .error-block').hide() }, 3000);
+                        setTimeout(function() {
+                            $('.yii2-image-ajax .error-block').hide();
+                        }, 3000);
                 },
                 success: function(file, response)
                 {
@@ -56,7 +59,9 @@ class ImageAjax extends InputWidget
                         $('#$id-delete').show();
                     } else {
                         $('.yii2-image-ajax .error-block').html(response.error).show();
-                        setTimeout(function() { $('.yii2-image-ajax .error-block').hide() }, 3000);
+                        setTimeout(function() {
+                            $('.yii2-image-ajax .error-block').hide();
+                        }, 3000);
                     }
                     $('#$id-select').removeClass('img-loading');
                     $('#$id-hidden-filed').val(response.url);
