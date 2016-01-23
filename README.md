@@ -75,20 +75,9 @@ class AjaxController extends Controller
 
 ## ScreenShot
 
-###Empty
-
 ![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/empty.png?raw=true "Empty")
-
-Load
-
 ![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/load.png?raw=true "Load")
-
-Select
-
 ![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/select.png?raw=true "Select")
-
-Error
-
 ![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/error.png?raw=true "Error")
 
 ## License
