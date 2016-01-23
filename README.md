@@ -75,7 +75,7 @@ class AjaxController extends Controller
 
 ## ScreenShot
 
-#Empty
+###Empty
 
 ![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/empty.png?raw=true "Empty")
 
