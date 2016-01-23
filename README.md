@@ -50,8 +50,6 @@ Controller:
 // AjaxController
 class AjaxController extends Controller
 {
-    ...
-
     public function actionUploadImage()
     {
         if (Yii::$app->request->isAjax) {
