@@ -28,10 +28,10 @@ to the ```require``` section of your `composer.json` file.
 The latest version of the module is v0.5.0 `BETA`.
 
 ## Latest Release
-![Alt text](/../yii2-image-ajax/screenshot/empty.png?raw=true "Empty form")
-![Alt text](/../yii2-image-ajax/screenshot/load.png?raw=true "Load form")
-![Alt text](/../yii2-image-ajax/screenshot/select.png?raw=true "Select form")
-![Alt text](/../yii2-image-ajax/screenshot/error.png?raw=true "Error form")
+![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/empty.png?raw=true "Empty")
+![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/load.png?raw=true "Load")
+![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/select.png?raw=true "Select")
+![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/error.png?raw=true "Error")
 
 ## Usage
 
