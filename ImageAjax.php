@@ -43,12 +43,9 @@ class ImageAjax extends InputWidget
         return $this->defaultImage ? $this->defaultImage : $this->getBaseUrl() . '/images/default_logo.jpg';
     }
 
-    public function init()
+    public function run()
     {
-        echo $this->getView()->render('@keygenqt/imageAjax/views/view', ['widget' => $this]);
-
         $this->getView()->registerJs("
-//          <script>
             new Dropzone('#{$this->getId()}-select', {
                 url: '{$this->getUrl()}',
                 clickable: true,
@@ -86,6 +83,6 @@ class ImageAjax extends InputWidget
             });
         ");
 
-        parent::init();
+        return $this->getView()->render('@keygenqt/imageAjax/views/view', ['widget' => $this]);
     }
 }

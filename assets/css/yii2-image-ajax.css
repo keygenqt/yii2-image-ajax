@@ -17,7 +17,7 @@
     width: 120px;
 }
 .yii2-image-ajax .table-cell:last-child {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .yii2-image-ajax .table-cell {
     display: table-cell;
@@ -33,6 +33,7 @@
     text-align: center;
     margin: 0 5px;
     cursor: pointer;
+	margin-bottom: 5px;
 }
 .btn-red-image-ajax {
     border: 1px solid #990000;
@@ -44,13 +45,15 @@
     text-align: center;
     margin: 0 5px;
     cursor: pointer;
+	margin-bottom: 5px;
 }
 .yii2-image-ajax .subtitle {
     font-size: 14px;
     color: #BBBBBB;
     width: 100%;
-    max-width: 350px;
     padding: 22px 5px;
+	padding-bottom: 0;
+	padding-top: 0;
 }
 .yii2-image-ajax .dz-preview {
     display: none;
