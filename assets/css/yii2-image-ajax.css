@@ -1,6 +1,5 @@
 .yii2-image-ajax .image-data img {
     width: 120px;
-    border-radius: 50%;
     border: 1px dashed #27C39F;
 }
 .yii2-image-ajax .image-data {
@@ -24,26 +23,30 @@
     vertical-align: top;
 }
 .btn-green-image-ajax {
-    border: 1px solid #27C39F;
-    color: #27C39F;
-    border-radius: 4px;
-    padding: 5px 10px;
+    padding: 7px 14px;
+    border: 1px solid white;
+    color: white;
     display: inline-block;
     text-decoration: none;
     text-align: center;
-    margin: 0 5px;
+    font-size: 16px;
+    background: #6A0088;
+    border: 1px solid #3d0047;
+    font-weight: bold;
     cursor: pointer;
 	margin-bottom: 5px;
 }
 .btn-red-image-ajax {
-    border: 1px solid #990000;
-    color: #990000;
-    border-radius: 4px;
-    padding: 5px 10px;
+    padding: 7px 14px;
+    border: 1px solid white;
+    color: white;
     display: inline-block;
     text-decoration: none;
     text-align: center;
-    margin: 0 5px;
+    font-size: 16px;
+    background: #880000;
+    border: 1px solid #470000;
+    font-weight: bold;
     cursor: pointer;
 	margin-bottom: 5px;
 }
