@@ -72,12 +72,6 @@ class AjaxController extends Controller
 }
 ```
 
-## ScreenShot
-
-![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/empty.png?raw=true "Empty")
-![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/load.png?raw=true "Load")
-![Alt text](https://raw.githubusercontent.com/keygenqt/yii2-image-ajax/master/screenshot/select.png?raw=true "Select")
-
 ## License
 
 **yii2-image-ajax** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
