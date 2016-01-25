@@ -1,6 +1,6 @@
 .yii2-image-ajax .image-data img {
     width: 120px;
-    border: 1px dashed #27C39F;
+    border: 1px dashed #6A0088;
 }
 .yii2-image-ajax .image-data {
     font-size: 0;
@@ -54,9 +54,6 @@
     font-size: 14px;
     color: #BBBBBB;
     width: 100%;
-    padding: 22px 5px;
-	padding-bottom: 0;
-	padding-top: 0;
 }
 .yii2-image-ajax .dz-preview {
     display: none;
