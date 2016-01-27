@@ -25,6 +25,7 @@ class ImageAjax extends InputWidget
     public function getBaseUrl()
     {
         if ($this->_baseUrl === null) {
+            BowerAssets::register($this->getView());
             $this->_baseUrl = ActiveAssets::register($this->getView())->baseUrl;
         }
         return $this->_baseUrl;
