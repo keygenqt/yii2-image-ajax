@@ -25,7 +25,7 @@
 	},
 	"scripts": {
 		"post-update-cmd": [
-			"../../node_modules/bower/lib/bin/bower install dropzone"
+			"/Users/KeyGenQt/Documents/WORK/WEB/roughcut.com/node_modules/bower/lib/bin/bower install dropzone"
 		]
 	}
 }
