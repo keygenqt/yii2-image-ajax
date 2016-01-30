@@ -13,7 +13,7 @@ class ImageAjax extends InputWidget
     public $btnSelect = 'Select';
     public $btnDelete = 'Delete';
     public $subtitle = '';
-    public $afterUpdate = 'function(){ alert(); }';
+    public $afterUpdate = 'function(){}';
 
     private $_baseUrl;
     private $_ajaxUrl;
