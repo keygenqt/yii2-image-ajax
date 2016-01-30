@@ -42,14 +42,15 @@ use \yii\helpers\Html;
             <div class="error-block"></div>
             <div class="btn-buttons-images">
                 <div id="<?= $widget->getId() ?>-select" class="btn-green-image-ajax"><?= $widget->btnSelect ?></div>
-                <div <?php if($widget->btnDelete === false): ?>style="display: none;"<?php endif; ?> id="<?= $widget->getId() ?>-delete" class="btn-red-image-ajax"><?= $widget->btnDelete ?></div>
+                <?php if($widget->btnDelete !== false): ?>
+                    <div id="<?= $widget->getId() ?>-delete" class="btn-red-image-ajax"><?= $widget->btnDelete ?></div>
+                <?php endif; ?>
                 <div class="subtitle">
                     <?= $widget->subtitle ?>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <?php if($widget->btnDelete !== false): ?>

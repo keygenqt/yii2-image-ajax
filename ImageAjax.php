@@ -13,6 +13,7 @@ class ImageAjax extends InputWidget
     public $btnSelect = 'Select';
     public $btnDelete = 'Delete';
     public $subtitle = '';
+    public $afterUpdate = 'function(){ alert(); }';
 
     private $_baseUrl;
     private $_ajaxUrl;
@@ -46,7 +47,10 @@ class ImageAjax extends InputWidget
 
     public function run()
     {
+        $this->afterUpdate = "var afterUpdte{$this->getId()} = " . $this->afterUpdate;
+        
         $this->getView()->registerJs("
+            {$this->afterUpdate}
             new Dropzone('#{$this->getId()}-select', {
                 url: '{$this->getUrl()}',
                 clickable: true,
@@ -80,6 +84,7 @@ class ImageAjax extends InputWidget
                     $('#{$this->getId()}-hidden-filed').val(response.url);
                     this.removeAllFiles();
                     $('#yii2-image-ajax-load').hide();
+                    afterUpdte{$this->getId()}();
                 }
             });
         ");
