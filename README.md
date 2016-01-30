@@ -44,6 +44,14 @@ use keygenqt\imageAjax\ImageAjax;
     'subtitle' => 'This video will change its size to 360х360, so keep that in mind.'
 ]) ?>
 
+<?= $form->field($model, 'icon')->widget(ImageAjax::classname(), [
+	'btnDelete' => false,
+	'url' => ['ajax/upload-image'],
+	'afterUpdate' => 'function() {
+		$(".field-app").hide();
+	}'
+]) ?>
+
 ```
 
 Controller:
