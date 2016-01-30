@@ -52,13 +52,15 @@ use \yii\helpers\Html;
 
 </div>
 
-<script type="text/javascript">
-    <?php if (!$widget->model->{$widget->attribute}): ?>
-    $('#<?= $widget->getId() . '-delete' ?>').hide();
-    <?php endif; ?>
-    $('#<?= $widget->getId() . '-delete' ?>').click(function() {
-        $('#<?= $widget->getId() . '-hidden-filed' ?>').val("");
-        $('#image-<?= $widget->getId() ?>').attr('src', "<?= $widget->getDefaultLogo() ?>");
-        $(this).hide();
-    });
-</script>
+<?php if($widget->btnDelete !== false): ?>
+    <script type="text/javascript">
+        <?php if (!$widget->model->{$widget->attribute}): ?>
+        $('#<?= $widget->getId() . '-delete' ?>').hide();
+        <?php endif; ?>
+        $('#<?= $widget->getId() . '-delete' ?>').click(function() {
+            $('#<?= $widget->getId() . '-hidden-filed' ?>').val("");
+            $('#image-<?= $widget->getId() ?>').attr('src', "<?= $widget->getDefaultLogo() ?>");
+            $(this).hide();
+        });
+    </script>
+<?php endif; ?>
