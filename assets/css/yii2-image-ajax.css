@@ -83,6 +83,9 @@
     border: none;
     width: 30px;
 }
+.yii2-image-ajax .image-data .load .table {
+	background-color: inherit;
+}
 .yii2-image-ajax .image-data .load .table-cell {
     padding: 0;
     text-align: center;
