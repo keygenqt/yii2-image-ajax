@@ -1,6 +1,6 @@
 <?php
 
-/** @var keygenqt\imageAjax\ImageAjax $widget */
+/* @var $widget keygenqt\imageAjax\ImageAjax */
 
 use \yii\helpers\Html;
 
@@ -35,7 +35,7 @@ use \yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-                <img id="image-<?= $widget->getId() ?>" src=" <?= $widget->model->{$widget->attribute} ? $widget->model->{$widget->attribute} : $widget->getDefaultLogo() ?>"/>
+                <img id="image-<?= $widget->getId() ?>" src="<?= $widget->model->{$widget->attribute} ? $widget->model->{$widget->attribute} : $widget->getDefaultLogo() ?>"/>
             </div>
         </div>
         <div class="table-cell">
