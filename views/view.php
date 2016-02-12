@@ -1,6 +1,6 @@
 <?php
 
-/* @var $widget keygenqt\imageAjax\ImageAjax */
+/** @var keygenqt\imageAjax\ImageAjax $widget */
 
 use \yii\helpers\Html;
 
@@ -27,7 +27,7 @@ use \yii\helpers\Html;
 
     <div class="table">
         <div class="table-cell">
-            <div class="image-data">
+            <div id="image-<?= $widget->getId() ?>" class="image-data" style="background-image: url('<?= $widget->model->{$widget->attribute} ? $widget->model->{$widget->attribute} : $widget->getDefaultLogo() ?>')">
                 <div id="yii2-image-ajax-load" class="load">
                     <div class="table">
                         <div class="table-cell">
@@ -35,7 +35,6 @@ use \yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-                <img id="image-<?= $widget->getId() ?>" src="<?= $widget->model->{$widget->attribute} ? $widget->model->{$widget->attribute} : $widget->getDefaultLogo() ?>"/>
             </div>
         </div>
         <div class="table-cell">
@@ -60,7 +59,7 @@ use \yii\helpers\Html;
         <?php endif; ?>
         $('#<?= $widget->getId() . '-delete' ?>').click(function() {
             $('#<?= $widget->getId() . '-hidden-filed' ?>').val("");
-            $('#image-<?= $widget->getId() ?>').attr('src', "<?= $widget->getDefaultLogo() ?>");
+            $('#image-<?= $widget->getId() ?>').css('background-image', "url('<?= $widget->getDefaultLogo() ?>')");
             $(this).hide();
         });
     </script>

@@ -69,6 +69,10 @@
 }
 .yii2-image-ajax .image-data {
     position: relative;
+    height: 120px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
 }
 .yii2-image-ajax .image-data .load {
     position: absolute;

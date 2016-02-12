@@ -72,7 +72,7 @@ class ImageAjax extends InputWidget
                     response = JSON.parse(response);
 
                     if (response.error === false) {
-                        $('#image-{$this->getId()}').attr('src', response.url);
+                        $('#image-{$this->getId()}').css('background-image', 'url(' + response.url + ')');
                         $('#{$this->getId()}-delete').show();
                     } else {
                         $('.yii2-image-ajax .error-block').html(response.error).show();
