@@ -12,13 +12,7 @@ Either add
 ```
 "require": {
     "keygenqt/yii2-image-ajax": "*"
-},
-"repositories":[
-    {
-        "type": "git",
-        "url": "https://github.com/keygenqt/yii2-image-ajax.git"
-    }
-]
+}
 ```
 
 of your `composer.json` file.
