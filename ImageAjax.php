@@ -15,7 +15,7 @@ class ImageAjax extends InputWidget
     public $btnSelect = 'Select';
     public $btnDelete = 'Delete';
     public $subtitle = '';
-    public $afterUpdate = 'function(file, response){}';
+    public $afterUpdate = 'function(response) {}';
 
     private $_baseUrl;
     private $_ajaxUrl;
@@ -104,7 +104,7 @@ class ImageAjax extends InputWidget
                     }
 
                     $('#yii2-image-ajax-load').hide();
-                    afterUpdate{$this->getId()}(file, response);
+                    afterUpdate{$this->getId()}(response);
                 }
             });
         ");
