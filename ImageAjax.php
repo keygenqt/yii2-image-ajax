@@ -68,6 +68,7 @@ class ImageAjax extends InputWidget
                 init: function() {
                     this.on(\"addedfile\", function() {
                         sizeFiles{$this->getId()} = this.files.length;
+                        $(\".btn-green-image-ajax.dz-clickable\").addClass(\"active\");
                     });
                 },
                 error: function(file, message) {
