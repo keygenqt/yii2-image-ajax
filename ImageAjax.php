@@ -9,11 +9,13 @@ class ImageAjax extends InputWidget
 {
     public $url = [];
     public $label = true;
+    public $maxFiles = 1;
+    public $maxFilesize = 100;
     public $defaultImage;
     public $btnSelect = 'Select';
     public $btnDelete = 'Delete';
     public $subtitle = '';
-    public $afterUpdate = 'function(){}';
+    public $afterUpdate = 'function(file, response){}';
 
     private $_baseUrl;
     private $_ajaxUrl;
@@ -47,18 +49,26 @@ class ImageAjax extends InputWidget
 
     public function run()
     {
-        $this->afterUpdate = "var afterUpdte{$this->getId()} = " . $this->afterUpdate;
-        
+        $this->afterUpdate = "var afterUpdate{$this->getId()} = " . $this->afterUpdate;
+
         $this->getView()->registerJs("
+
+            var sizeFiles{$this->getId()} = 0;
+
             {$this->afterUpdate}
             new Dropzone('#{$this->getId()}-select', {
                 url: '{$this->getUrl()}',
                 clickable: true,
-                maxFiles: 1,
-                maxFilesize: 100,
+                maxFiles: {$this->maxFiles},
+                maxFilesize: {$this->maxFilesize},
                 thumbnail: function() {},
                 sending: function() {
                     $('#yii2-image-ajax-load').show();
+                },
+                init: function() {
+                    this.on(\"addedfile\", function() {
+                        sizeFiles{$this->getId()} = this.files.length;
+                    });
                 },
                 error: function(file, message) {
                     $('#yii2-image-ajax-load').hide();
@@ -66,6 +76,11 @@ class ImageAjax extends InputWidget
                         setTimeout(function() {
                             $('.yii2-image-ajax .error-block').hide();
                         }, 3000);
+
+                    sizeFiles{$this->getId()}--;
+                    if (sizeFiles{$this->getId()} == 0) {
+                        this.removeAllFiles();
+                    }
                 },
                 success: function(file, response)
                 {
@@ -82,9 +97,14 @@ class ImageAjax extends InputWidget
                     }
                     $('#{$this->getId()}-select').removeClass('img-loading');
                     $('#{$this->getId()}-hidden-filed').val(response.url);
-                    this.removeAllFiles();
+
+                    sizeFiles{$this->getId()}--;
+                    if (sizeFiles{$this->getId()} == 0) {
+                        this.removeAllFiles();
+                    }
+
                     $('#yii2-image-ajax-load').hide();
-                    afterUpdte{$this->getId()}();
+                    afterUpdate{$this->getId()}(file, response);
                 }
             });
         ");
