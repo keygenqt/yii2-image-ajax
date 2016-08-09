@@ -28,7 +28,7 @@ use \yii\helpers\Html;
     <div class="table">
         <div class="table-cell">
             <div id="image-<?= $widget->getId() ?>" class="image-data" style="background-image: url('<?= $widget->model->{$widget->attribute} ? $widget->model->{$widget->attribute} : $widget->getDefaultLogo() ?>')">
-                <div id="yii2-image-ajax-load" class="load">
+                <div id="<?= $widget->getId() ?>-yii2-image-ajax-load" class="load">
                     <div class="table">
                         <div class="table-cell">
                             <img src="<?= $widget->getBaseUrl() ?>/images/load.gif"/>

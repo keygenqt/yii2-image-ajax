@@ -63,7 +63,7 @@ class ImageAjax extends InputWidget
                 maxFilesize: {$this->maxFilesize},
                 thumbnail: function() {},
                 sending: function() {
-                    $('#yii2-image-ajax-load').show();
+                    $('#{$this->getId()}-yii2-image-ajax-load').show();
                 },
                 init: function() {
                     this.on(\"addedfile\", function() {
@@ -72,7 +72,7 @@ class ImageAjax extends InputWidget
                     });
                 },
                 error: function(file, message) {
-                    $('#yii2-image-ajax-load').hide();
+                    $('#{$this->getId()}-yii2-image-ajax-load').hide();
                     $('.yii2-image-ajax .error-block').html('Error server response.').show();
                         setTimeout(function() {
                             $('.yii2-image-ajax .error-block').hide();
@@ -99,7 +99,7 @@ class ImageAjax extends InputWidget
                     $('#{$this->getId()}-select').removeClass('img-loading');
                     $('#{$this->getId()}-hidden-filed').val(response.url);
 
-                    $('#yii2-image-ajax-load').hide();
+                    $('#{$this->getId()}-yii2-image-ajax-load').hide();
 
                     sizeFiles{$this->getId()}--;
                     if (sizeFiles{$this->getId()} == 0) {
