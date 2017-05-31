@@ -100,11 +100,12 @@ class ImageAjax extends InputWidget
                     $('#{$this->getId()}-hidden-filed').val(response.url);
 
                     $('#yii2-image-ajax-load').hide();
+                    
+                    afterUpdate{$this->getId()}(response);
 
                     sizeFiles{$this->getId()}--;
                     if (sizeFiles{$this->getId()} == 0) {
                         this.removeAllFiles();
-                        afterUpdate{$this->getId()}(response);
                     }
                 }
             });
