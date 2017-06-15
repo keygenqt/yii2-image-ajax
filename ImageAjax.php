@@ -53,62 +53,66 @@ class ImageAjax extends InputWidget
 
         $this->getView()->registerJs("
 
-            var sizeFiles{$this->getId()} = 0;
-
-            {$this->afterUpdate}
-            new Dropzone('#{$this->getId()}-select', {
-                url: '{$this->getUrl()}',
-                clickable: true,
-                maxFiles: {$this->maxFiles},
-                maxFilesize: {$this->maxFilesize},
-                thumbnail: function() {},
-                sending: function() {
-                    $('#{$this->getId()}-yii2-image-ajax-load').show();
-                },
-                init: function() {
-                    this.on(\"addedfile\", function() {
-                        sizeFiles{$this->getId()} = this.files.length;
-                        $(\".btn-green-image-ajax.dz-clickable\").addClass(\"active\");
-                    });
-                },
-                error: function(file, message) {
-                    $('#{$this->getId()}-yii2-image-ajax-load').hide();
-                    $('.yii2-image-ajax .error-block').html('Error server response.').show();
-                        setTimeout(function() {
-                            $('.yii2-image-ajax .error-block').hide();
-                        }, 3000);
-
-                    sizeFiles{$this->getId()}--;
-                    if (sizeFiles{$this->getId()} == 0) {
-                        this.removeAllFiles();
+            if (!$('#{$this->getId()}-select').hasClass('dz-clickable')) {
+                
+                var sizeFiles{$this->getId()} = 0;
+    
+                {$this->afterUpdate}
+                new Dropzone('#{$this->getId()}-select', {
+                    url: '{$this->getUrl()}',
+                    clickable: true,
+                    maxFiles: {$this->maxFiles},
+                    maxFilesize: {$this->maxFilesize},
+                    thumbnail: function() {},
+                    sending: function() {
+                        $('#{$this->getId()}-yii2-image-ajax-load').show();
+                    },
+                    init: function() {
+                        this.on(\"addedfile\", function() {
+                            sizeFiles{$this->getId()} = this.files.length;
+                            $(\".btn-green-image-ajax.dz-clickable\").addClass(\"active\");
+                        });
+                    },
+                    error: function(file, message) {
+                        $('#{$this->getId()}-yii2-image-ajax-load').hide();
+                        $('.{$this->getId()}.yii2-image-ajax .error-block').html('Error server response.').show();
+                            setTimeout(function() {
+                                $('.{$this->getId()}.yii2-image-ajax .error-block').hide();
+                            }, 3000);
+    
+                        sizeFiles{$this->getId()}--;
+                        if (sizeFiles{$this->getId()} == 0) {
+                            this.removeAllFiles();
+                        }
+                    },
+                    success: function(file, response)
+                    {
+                        response = JSON.parse(response);
+    
+                        if (response.error === false) {
+                            $('#image-{$this->getId()}').css('background-image', 'url(' + response.url + ')');
+                            $('#{$this->getId()}-delete').show();
+                        } else {
+                            $('.{$this->getId()}.yii2-image-ajax .error-block').html(response.error).show();
+                            setTimeout(function() {
+                                $('.{$this->getId()}.yii2-image-ajax .error-block').hide();
+                            }, 3000);
+                        }
+                        $('#{$this->getId()}-select').removeClass('img-loading');
+                        $('#{$this->getId()}-hidden-filed').val(response.url);
+    
+                        $('#{$this->getId()}-yii2-image-ajax-load').hide();
+                        
+                        afterUpdate{$this->getId()}(response);
+    
+                        sizeFiles{$this->getId()}--;
+                        if (sizeFiles{$this->getId()} == 0) {
+                            this.removeAllFiles();
+                        }
                     }
-                },
-                success: function(file, response)
-                {
-                    response = JSON.parse(response);
+                });
+            }
 
-                    if (response.error === false) {
-                        $('#image-{$this->getId()}').css('background-image', 'url(' + response.url + ')');
-                        $('#{$this->getId()}-delete').show();
-                    } else {
-                        $('.{$this->getId()}.yii2-image-ajax .error-block').html(response.error).show();
-                        setTimeout(function() {
-                            $('.{$this->getId()}.yii2-image-ajax .error-block').hide();
-                        }, 3000);
-                    }
-                    $('#{$this->getId()}-select').removeClass('img-loading');
-                    $('#{$this->getId()}-hidden-filed').val(response.url);
-
-                    $('#{$this->getId()}-yii2-image-ajax-load').hide();
-                    
-                    afterUpdate{$this->getId()}(response);
-
-                    sizeFiles{$this->getId()}--;
-                    if (sizeFiles{$this->getId()} == 0) {
-                        this.removeAllFiles();
-                    }
-                }
-            });
         ");
 
         return $this->getView()->render('@keygenqt/imageAjax/views/view', ['widget' => $this]);
