@@ -15,7 +15,7 @@ class ImageAjax extends InputWidget
     public $btnSelect = 'Select';
     public $btnDelete = 'Delete';
     public $subtitle = '';
-    public $afterUpdate = 'function(response) {}';
+    public $afterUpdate = 'function(response, index) {}';
 
     private $_baseUrl;
     private $_ajaxUrl;
@@ -54,9 +54,9 @@ class ImageAjax extends InputWidget
         $this->getView()->registerJs("
 
             if (!$('#{$this->getId()}-select').hasClass('dz-clickable')) {
-                
+
                 var sizeFiles{$this->getId()} = 0;
-    
+
                 {$this->afterUpdate}
                 new Dropzone('#{$this->getId()}-select', {
                     url: '{$this->getUrl()}',
@@ -79,18 +79,24 @@ class ImageAjax extends InputWidget
                             setTimeout(function() {
                                 $('.{$this->getId()}.yii2-image-ajax .error-block').hide();
                             }, 3000);
-    
+
                         sizeFiles{$this->getId()}--;
                         if (sizeFiles{$this->getId()} == 0) {
+                            $('#{$this->getId()}-yii2-image-ajax-load').hide();
                             this.removeAllFiles();
                         }
                     },
                     success: function(file, response)
                     {
                         response = JSON.parse(response);
-    
+
+                        var value = response.url;
+                        if (value === undefined) {
+                            value = '{$this->getDefaultLogo()}';
+                        }
+
                         if (response.error === false) {
-                            $('#image-{$this->getId()}').css('background-image', 'url(' + response.url + ')');
+                            $('#image-{$this->getId()}').css('background-image', 'url(' + value + ')');
                             $('#{$this->getId()}-delete').show();
                         } else {
                             $('.{$this->getId()}.yii2-image-ajax .error-block').html(response.error).show();
@@ -99,14 +105,13 @@ class ImageAjax extends InputWidget
                             }, 3000);
                         }
                         $('#{$this->getId()}-select').removeClass('img-loading');
-                        $('#{$this->getId()}-hidden-filed').val(response.url);
-    
-                        $('#{$this->getId()}-yii2-image-ajax-load').hide();
-                        
-                        afterUpdate{$this->getId()}(response);
-    
+                        $('#{$this->getId()}-hidden-filed').val(value);
+
+                        afterUpdate{$this->getId()}(response, sizeFiles{$this->getId()});
+
                         sizeFiles{$this->getId()}--;
                         if (sizeFiles{$this->getId()} == 0) {
+                            $('#{$this->getId()}-yii2-image-ajax-load').hide();
                             this.removeAllFiles();
                         }
                     }
