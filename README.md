@@ -34,9 +34,3 @@ of your `composer.json` file.
     }'
 ]) ?>
 ```
-
-## License
-
-**yii2-image-ajax** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
-
-
