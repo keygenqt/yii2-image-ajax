@@ -1,4 +1,19 @@
 <?php
+/*
+ * Copyright 2020 Vitaliy Zarubin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 /** @var keygenqt\imageAjax\ImageAjax $widget */
 
@@ -23,7 +38,7 @@ use \yii\helpers\Html;
 
 <div class="yii2-image-ajax <?= $widget->getId() ?>">
 
-    <?= Html::activeHiddenInput($widget->model, $widget->attribute, array('id' => $widget->getId() . '-hidden-filed')) ?>
+    <?= Html::activeHiddenInput($widget->model, $widget->attribute) ?>
 
     <div class="table">
         <div class="table-cell">
@@ -58,7 +73,7 @@ use \yii\helpers\Html;
         $('#<?= $widget->getId() . '-delete' ?>').hide();
         <?php endif; ?>
         $('#<?= $widget->getId() . '-delete' ?>').click(function() {
-            $('#<?= $widget->getId() . '-hidden-filed' ?>').val("");
+            $('#<?= $widget->id ?>').val("");
             $('#image-<?= $widget->getId() ?>').css('background-image', "url('<?= $widget->getDefaultLogo() ?>')");
             $(this).hide();
         });

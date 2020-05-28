@@ -1,12 +1,33 @@
 <?php
+/*
+ * Copyright 2020 Vitaliy Zarubin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 namespace keygenqt\imageAjax;
 
 use yii\helpers\Url;
 use yii\widgets\InputWidget;
 
+/**
+ * @property string $id
+ * @property string $classname
+ */
 class ImageAjax extends InputWidget
 {
+    public $id;
+    public $classname;
     public $url = [];
     public $label = true;
     public $maxFiles = 1;
@@ -19,6 +40,13 @@ class ImageAjax extends InputWidget
 
     private $_baseUrl;
     private $_ajaxUrl;
+
+    public function init()
+    {
+        $this->classname = strtolower((new \ReflectionClass($this->model))->getShortName());
+        $this->id = "{$this->classname}-$this->attribute";
+        parent::init();
+    }
 
     public function getModelName()
     {
@@ -105,7 +133,7 @@ class ImageAjax extends InputWidget
                             }, 3000);
                         }
                         $('#{$this->getId()}-select').removeClass('img-loading');
-                        $('#{$this->getId()}-hidden-filed').val(value);
+                        $('#{$this->id}').val(value);
 
                         afterUpdate{$this->getId()}(response, sizeFiles{$this->getId()});
 

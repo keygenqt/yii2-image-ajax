@@ -34,10 +34,11 @@
     font-weight: bold;
     cursor: pointer;
 	margin-bottom: 5px;
+    margin-right: 10px;
 }
 .btn-red-image-ajax {
-    padding: 7px 14px;
-    border: 1px solid white;
+    padding: 9px 12px;
+    border: none !important;
     color: white;
     display: inline-block;
     text-decoration: none;
