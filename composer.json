@@ -1,6 +1,6 @@
 {
 	"name": "keygenqt/yii2-image-ajax",
-	"description": "Widget from form image ajax load.",
+	"description": "A simple way to do ajax loading image on the site",
 	"keywords": ["yii2", "extension", "widget", "image", "ajax", "jquery", "plugin"],
 	"homepage": "http://keygenqt.com/work/yii2-image-ajax",
 	"type": "yii2-extension",
