@@ -1,4 +1,4 @@
-[Image Ajax](http://keygenqt.com/work/yii2-image-ajax)
+[Image Ajax](https://keygenqt.com/work/yii2-image-ajax)
 ===================
 
 ![GitHub](https://img.shields.io/github/license/keygenqt/yii2-autocomplete-ajax)
