@@ -24,7 +24,7 @@ use \yii\web\AssetBundle;
  */
 class BowerAssets extends AssetBundle
 {
-	public $sourcePath = '@bower/dropzone/dist/min';
+    public $sourcePath = '@keygenqt/imageAjax/assets/js';
 
 	public $js = [
 		'dropzone.min.js'
