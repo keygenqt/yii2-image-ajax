@@ -1,7 +1,7 @@
 Image Ajax
 ===================
 
-![Packagist Downloads](https://img.shields.io/packagist/dt/keygenqt/yii2-image-ajax)
+![Packagist Downloads](https://img.shields.io/packagist/dt/keygenqt/yii2-image-ajax?label=Packagist%20Downloads)
 
 This is the Image Ajax widget Yii 2 enhanced wrapper for the [Dropzone library](http://www.dropzonejs.com). A simple way to do ajax loading image on the site.
 
